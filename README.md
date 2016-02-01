@@ -1,6 +1,9 @@
 API Serives Library for Zend Framework 2
 =============
 
+API Services
+* [Twilio](https://github.com/oromedialab/zf2-api-service#twilio-)
+
 Installation
 ------------
 
