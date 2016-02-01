@@ -1,6 +1,22 @@
 API Serives Library for Zend Framework 2
 =============
 
+Installation
+------------
+
+#### Install using composer
+```
+composer require oromedialab/zf2-api-service dev-master
+```
+
+#### Install using GIT clone
+```
+git clone https://github.com/oromedialab/zf2-api-service.git
+```
+
+#### Enable Zf2 Module
+Enable the module by adding `Oml\Zf2ApiService` in your `config/application.config.php` file.
+
 Twilio 
 ------
 URL : (http://twilio.com/)
