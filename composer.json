@@ -13,13 +13,8 @@
     "require": {
         "php": ">5.4",
         "zendframework/zend-servicemanager": "*",
-        "oromedialab/php-api-service": "dev-master"
+        "oromedialab/php-api-service": "*"
     },
-    "repositories": [
-    {
-        "type": "vcs",
-        "url": "git@github.com:oromedialab/php-api-service.git"
-    }],
     "autoload": {
         "psr-4": {
             "Oml\\Zf2ApiService\\": "src/"
