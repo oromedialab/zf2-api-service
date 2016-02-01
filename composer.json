@@ -15,6 +15,11 @@
         "zendframework/zend-servicemanager": "*",
         "oromedialab/php-api-service": "dev-master"
     },
+    "repositories": [
+    {
+        "type": "vcs",
+        "url": "git@github.com:oromedialab/php-api-service.git"
+    }],
     "autoload": {
         "psr-4": {
             "Oml\\Zf2ApiService\\": "src/"
