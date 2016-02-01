@@ -1,0 +1,22 @@
+{
+    "name": "oromedialab/zf2-api-serivce",
+    "description": "API Service Library for Zend Framework 2",
+    "license": "MIT",
+    "keywords": ["zf2-api-serivce"],
+    "authors": [
+        {
+            "name": "Ibrahim Azhar Armar",
+            "email": "azhar@iarmar.com"
+        }
+    ],
+    "require": {
+        "php": ">5.4",
+        "zendframework/zend-servicemanager": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Oml\\Zf2ApiService\\": "src/"
+        },
+        "classmap": ["Module.php"]
+    }
+}
