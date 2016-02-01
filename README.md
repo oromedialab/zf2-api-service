@@ -6,9 +6,8 @@ Twilio
 URL : (http://twilio.com/)
 
 #### Compose SMS
-
-Define config
 ```php
+// Define config in your config file
 return [
 	'oml' => [
 		'zf2-api-service' => [
@@ -20,21 +19,12 @@ return [
 		]
 	]
 ];
-```
-Send SMS using service manager
-
-```php
-// Init service manager
+// Init Twilio\SMS\Compose service to send message
 $sm = $this->getServiceLocator();
-// Init SMS\Compose
 $sms = $sm->get('Oml\Zf2ApiService\Twilio\SMS\Compose')->init();
-// Set From
-$sms->setTo('+919916876761');
-// Set Message
-$sms->setMessage('Lorem ipsum dolor sit amet, consectetur adipisicing elit.');
-// Send Message
-if($sms->send()) {
-	// Get sent message id
-    echo $sms->getMessageSid();
+$sms->setTo('xxx-xxx-xxx');
+$sms->setMessage('xxxx xxxx xxxx xxxx xxxx xxxxx');
+$sms->send()
+$sentMessageId = $sms->getMessageSid()
 }
 ```
