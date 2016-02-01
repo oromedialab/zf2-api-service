@@ -9,7 +9,6 @@
             "email": "azhar@iarmar.com"
         }
     ],
-    "minimum-stability": "dev",
     "require": {
         "php": ">5.4",
         "zendframework/zend-servicemanager": "*",
