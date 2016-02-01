@@ -1,0 +1,13 @@
+<?php
+
+return [
+	'oml' => [
+		'zf2-api-service' => [
+			'twilio' => [
+				'account_sid' => 'xxx-xxx-xxx',
+				'auth_token'  => 'xxx-xxx-xxx',
+				'from' => 'xxx-xxx-xxx'
+			]
+		]
+	]
+];
