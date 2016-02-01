@@ -1,8 +1,8 @@
 {
-    "name": "oromedialab/zf2-api-serivce",
+    "name": "oromedialab/zf2-api-service",
     "description": "API Service Library for Zend Framework 2",
     "license": "MIT",
-    "keywords": ["zf2-api-serivce"],
+    "keywords": ["zf2-api-service"],
     "authors": [
         {
             "name": "Ibrahim Azhar Armar",
