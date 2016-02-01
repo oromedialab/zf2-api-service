@@ -11,7 +11,8 @@
     ],
     "require": {
         "php": ">5.4",
-        "zendframework/zend-servicemanager": "*"
+        "zendframework/zend-servicemanager": "*",
+        "oromedialab/php-api-services": "*"
     },
     "autoload": {
         "psr-4": {
