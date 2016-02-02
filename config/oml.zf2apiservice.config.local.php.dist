@@ -7,6 +7,9 @@ return [
 				'account_sid' => 'xxx-xxx-xxx',
 				'auth_token'  => 'xxx-xxx-xxx',
 				'from' => 'xxx-xxx-xxx'
+			],
+			'templates' => [
+				'verification-message' => 'Your verfication code is %code%, do not share this code with anyone for security reasons'
 			]
 		]
 	]
