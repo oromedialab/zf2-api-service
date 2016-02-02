@@ -24,7 +24,7 @@ Twilio
 ------
 URL : (http://twilio.com/)
 
-#### Compose SMS
+##### Compose SMS
 ```php
 // Define config in your config file
 return [
@@ -51,7 +51,7 @@ $response->status;
 $response->sid;
 ```
 
-#### Message Template
+##### Message Template
 You can reuse the message be defining templates in config file
 ```php
 // Define template
@@ -74,7 +74,7 @@ $sms->setTemplate('verification-message');
 $response = $sms->send();
 ```
 
-#### Template Placeholder
+##### Template Placeholder
 Placeholder allows you to dynamically replace value(s) in message templates, consider the following template
 ```php
 // Define template
