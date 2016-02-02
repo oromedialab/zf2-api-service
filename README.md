@@ -50,9 +50,11 @@ $response->status;
 // Get message sid
 $response->sid;
 ```
+
 #### Message Template
 You can reuse the message be defining templates in config file
 ```php
+
 // Define template
 return [
 	'oml' => [
@@ -63,6 +65,7 @@ return [
 		]
 	]
 ];
+
 // Use template
 $sm = $this->getServiceLocator();
 $twilio = $sm->get('Oml\Zf2ApiService\Twilio\SMS\Compose');
@@ -71,6 +74,7 @@ $sms->setTo('xxx-xxx-xxx');
 $sms->setTemplate('verification-message');
 $response = $sms->send();
 ```
+
 #### Template Placeholder
 Placeholder allows you to dynamically replace value(s) in message templates, consider the following template
 ```php
@@ -84,6 +88,7 @@ return [
 		]
 	]
 ];
+
 // Replace placeholder and send message
 $sm = $this->getServiceLocator();
 $twilio = $sm->get('Oml\Zf2ApiService\Twilio\SMS\Compose');
@@ -93,4 +98,5 @@ $sms->setTemplate('verification-message');
 $sms->setPlaceholder('code', '7186');
 $response = $sms->send();
 ```
+
 In the message template, we have used `%code` as a placeholder, this value can be replaced using the method `setPlaceholder($name, $value)`. For example to replace the placeholder `%code` we can do it using `$sms->setPlaceholder('code', '7186')` it is important to note that while defining the placeholder we used '%' but while replacing we do not use this operator.
