@@ -54,13 +54,12 @@ $response->sid;
 #### Message Template
 You can reuse the message be defining templates in config file
 ```php
-
 // Define template
 return [
 	'oml' => [
 		'zf2-api-service' => [
 			'templates' => [
-				'registration-message' => 'Thank you for registering with us, we'll keep you posted with exciting offers'
+				'registration-message' => 'Thank you for registering with us, we will keep you posted with exciting offers'
 			]
 		]
 	]
