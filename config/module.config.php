@@ -18,7 +18,8 @@ return [
 				'account_sid' => null,
                 'auth_token'  => null,
                 'from' => null
-			]
+			],
+			'templates' => []
 		]
 	]
 ];
