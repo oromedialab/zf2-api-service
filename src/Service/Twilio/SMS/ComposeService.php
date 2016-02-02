@@ -23,6 +23,13 @@ class ComposeService implements ServiceLocatorAwareInterface
     protected $serviceLocator;
 
     /**
+     * Instance SMS\Compose Object
+     *
+     * @var Oml\PHPAPIService\Twilio\SMS\Compose
+     */
+    protected $sms;
+
+    /**
      * Init SMS\Compose
      *
      * @return Oml\PHPAPIService\Twilio\SMS\Compose
@@ -32,7 +39,8 @@ class ComposeService implements ServiceLocatorAwareInterface
         $config = $this->config();
         $sms = new SMS\Compose($config['account_sid'], $config['auth_token']);
         $sms->setFrom($config['from']);
-        return $sms;
+        $this->sms = $sms;
+        return $this;
     }
 
     /**
@@ -74,6 +82,70 @@ class ComposeService implements ServiceLocatorAwareInterface
     }
 
     /**
+     * Set placeholder value in template
+     *
+     * @param string $name (palceholder name)
+     * @param string $value (valeu to be replaced)
+     */
+    public function setPlaceholder($name, $value)
+    {
+        if (!is_string($name)) {
+            throw new \Exception(__NAMESPACE__.' : name must be of type "string", "'.gettype($name). '" given');
+        }
+        if (!is_string($value)) {
+            throw new \Exception(__NAMESPACE__.' : value must be of type "string", "'.gettype($name). '" given');
+        }
+        $sms = $this->getSms();
+        $message = str_replace('%'.$name.'%', $value, $sms->getMessage());
+        $sms->setMessage($message);
+        return $this;
+    }
+
+    /**
+     * Replace SMS message with given template
+     *
+     * @param string $template (template name)
+     * @return $this
+     */
+    public function setTemplate($template)
+    {
+        $sm = $this->getServiceLocator();
+        $config = $sm->get('Config');
+        if (!array_key_exists('oml', $config) || empty($config['oml'])) {
+            throw new \Exception(__NAMESPACE__.' : undefined config [oml], refer documentation for more information');
+        }
+        $omlConfig = $config['oml'];
+        if (!array_key_exists('zf2-api-service', $omlConfig) || empty($omlConfig['zf2-api-service'])) {
+            throw new \Exception(__NAMESPACE__.' : undefined config [zf2-api-service], refer documentation for more information');
+        }
+        $zf2ApiServiceConfig = $omlConfig['zf2-api-service'];
+        if (!array_key_exists('templates', $zf2ApiServiceConfig) || empty($zf2ApiServiceConfig['templates'])) {
+            throw new \Exception(__NAMESPACE__.' : undefined config [templates], refer documentation for more information');
+        }
+        $templatesConfig = $zf2ApiServiceConfig['templates'];
+        if (!array_key_exists($template, $templatesConfig) || empty($templatesConfig[$template])) {
+            throw new \Exception(__NAMESPACE__.' : undefined template ['.$template.'], make sure template is defined in config file before using');
+        }
+        $templateMessage = $templatesConfig[$template];
+        $this->getSms()->setMessage($templateMessage);
+        return $this;
+    }
+
+    /**
+     * Route non existent methods to Oml\PHPAPIService\Twilio\SMS\Compose
+     *
+     * @param string $name (method name)
+     * @param array $args (method arguments)
+     */
+    public function __call($name, $args)
+    {
+        if (method_exists($this->getSms(), $name)) {
+            call_user_func_array(array($this->getSms(), $name), array($args));
+        }
+        return $this;
+    }
+
+    /**
      * Method applied from ServiceLocatorAwareInterface, required to inject service locator object
      *
      * @param ServiceLocatorInterface $sl
@@ -93,5 +165,15 @@ class ComposeService implements ServiceLocatorAwareInterface
     public function getServiceLocator()
     {
         return $this->serviceLocator;
+    }
+
+    /**
+     * Return SMS Instance
+     *
+     * @return Oml\PHPAPIService\Twilio\SMS\Compose
+     */
+    protected function getSms()
+    {
+        return $this->sms;
     }
 }
