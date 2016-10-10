@@ -1,4 +1,4 @@
-API Serives Library for Zend Framework 2
+API Service Library for Zend Framework 2
 =============
 
 API Services
